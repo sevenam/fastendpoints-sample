@@ -1,10 +1,12 @@
-﻿using FstEndPntsSample.Services;
+﻿using FstEndPntsSample.Dtos;
+using FstEndPntsSample.Services;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
 
 namespace FstEndPntsSample.Endpoints
 {
   [HttpGet("api/stuff"), AllowAnonymous]
-  public class GetAllTheStuffEndpoint : EndpointWithoutRequest
+  public class GetAllTheStuffEndpoint : EndpointWithoutRequest<List<Stuff>> //probably want cleaner request/response objects here...
   {
     private readonly IStuffService stuffService;
 
@@ -16,7 +18,7 @@ namespace FstEndPntsSample.Endpoints
     public override async Task HandleAsync(CancellationToken ct)
     {
       var allofthestuff = stuffService.GetAllTheStuff();
-      await SendAsync(allofthestuff);
+      await SendOkAsync(allofthestuff, ct);
     }
 
   }
