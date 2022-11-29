@@ -6,7 +6,7 @@ using System.Net;
 namespace FstEndPntsSample.Endpoints
 {
   [HttpPost("api/stuff"), AllowAnonymous]
-  public class AddStuffEndpoint : Endpoint<Stuff, bool> //probably want cleaner request/response objects here...
+  public class AddStuffEndpoint : Endpoint<Stuff, bool> //probably want better request/response objects here...
   {
     private readonly IStuffService stuffService;
 

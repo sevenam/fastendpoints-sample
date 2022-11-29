@@ -1,12 +1,11 @@
-﻿using FstEndPntsSample.Dtos;
+﻿using FstEndPntsSample.Requests;
 using FstEndPntsSample.Services;
 using Microsoft.AspNetCore.Authorization;
-using System.Net;
 
 namespace FstEndPntsSample.Endpoints
 {
   [HttpDelete("api/stuff/{id}"), AllowAnonymous]
-  public class DeleteStuffEndpoint : Endpoint<Guid, bool> //probably want cleaner request/response objects here...
+  public class DeleteStuffEndpoint : Endpoint<ByGuidRequest, bool> //probably want better response object here...
   {
     private readonly IStuffService stuffService;
 
@@ -15,9 +14,9 @@ namespace FstEndPntsSample.Endpoints
       this.stuffService = stuffService;
     }
 
-    public override async Task HandleAsync(Guid id, CancellationToken ct)
+    public override async Task HandleAsync(ByGuidRequest request, CancellationToken ct)
     {
-      var result = stuffService.RemoveStuff(id);
+      var result = stuffService.RemoveStuff(request.Id);
       await SendOkAsync(result, ct);
     }
   }

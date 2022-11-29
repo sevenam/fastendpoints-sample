@@ -1,12 +1,11 @@
 ﻿using FstEndPntsSample.Dtos;
 using FstEndPntsSample.Services;
 using Microsoft.AspNetCore.Authorization;
-using System.Net;
 
 namespace FstEndPntsSample.Endpoints
 {
   [HttpGet("api/stuff"), AllowAnonymous]
-  public class GetAllTheStuffEndpoint : EndpointWithoutRequest<List<Stuff>> //probably want cleaner request/response objects here...
+  public class GetAllTheStuffEndpoint : EndpointWithoutRequest<List<Stuff>>
   {
     private readonly IStuffService stuffService;
 
