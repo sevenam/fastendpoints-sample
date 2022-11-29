@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="FastEndpoints" Version="5.4.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="5.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\" />
     <Folder Include="Requests\" />
   </ItemGroup>
 
